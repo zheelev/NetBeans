@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.12.2017 16:40:54 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Logic.Authusers" table="authusers" catalog="sqltraining" optimistic-lock="version">
+        <id name="idAuth" type="java.lang.Integer">
+            <column name="ID_auth" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="Logic.Users" fetch="select">
+            <column name="ID_users" not-null="true" />
+        </many-to-one>
+        <property name="mac" type="string">
+            <column name="MAC" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
