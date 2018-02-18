@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03.06.2017 18:49:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="logic.Tickets" table="tickets" catalog="bustickets" optimistic-lock="version">
+        <id name="idTickets" type="java.lang.Integer">
+            <column name="ID_tickets" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="seats" class="logic.Seats" fetch="select">
+            <column name="seatNomber" not-null="true" />
+        </many-to-one>
+        <property name="price" type="int">
+            <column name="price" not-null="true" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="fullName" length="150" not-null="true" />
+        </property>
+        <property name="documents" type="string">
+            <column name="documents" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

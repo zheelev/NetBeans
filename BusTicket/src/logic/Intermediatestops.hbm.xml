@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03.06.2017 18:49:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="logic.Intermediatestops" table="intermediatestops" catalog="bustickets" optimistic-lock="version">
+        <id name="idStops" type="java.lang.Integer">
+            <column name="ID_stops" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="route" class="logic.Route" fetch="select">
+            <column name="ID_route" not-null="true" />
+        </many-to-one>
+        <property name="nameOfStop" type="string">
+            <column name="nameOfStop" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

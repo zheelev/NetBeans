@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03.06.2017 18:49:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="logic.Route" table="route" catalog="bustickets" optimistic-lock="version">
+        <id name="idRoute" type="java.lang.Integer">
+            <column name="ID_route" />
+            <generator class="identity" />
+        </id>
+        <property name="start" type="string">
+            <column name="start" length="100" not-null="true" />
+        </property>
+        <property name="end" type="string">
+            <column name="end" length="100" not-null="true" />
+        </property>
+        <property name="countOfseats" type="int">
+            <column name="countOfseats" not-null="true" />
+        </property>
+        <property name="dateStart" type="date">
+            <column name="dateStart" length="10" not-null="true" />
+        </property>
+        <set name="reviews" table="review" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_route" not-null="true" />
+            </key>
+            <one-to-many class="logic.Review" />
+        </set>
+        <set name="intermediatestopses" table="intermediatestops" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_route" not-null="true" />
+            </key>
+            <one-to-many class="logic.Intermediatestops" />
+        </set>
+        <set name="seatses" table="seats" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_route" not-null="true" />
+            </key>
+            <one-to-many class="logic.Seats" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 03.06.2017 18:49:44 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="logic.Review" table="review" catalog="bustickets" optimistic-lock="version">
+        <id name="idReview" type="java.lang.Integer">
+            <column name="ID_review" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="route" class="logic.Route" fetch="select">
+            <column name="ID_route" not-null="true" />
+        </many-to-one>
+        <property name="review" type="string">
+            <column name="review" length="150" not-null="true" />
+        </property>
+        <property name="grade" type="int">
+            <column name="grade" not-null="true" />
+        </property>
+        <property name="documentUsers" type="string">
+            <column name="documentUsers" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
